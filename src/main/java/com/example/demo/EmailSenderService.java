@@ -43,7 +43,6 @@ public class EmailSenderService {
         mimeMessageHelper.setTo(toEmail);
         mimeMessageHelper.setText(body);
         mimeMessageHelper.setSubject(subject);
-//        Set<String> fileSystemResources = new HashSet<>();
         fileSystemResources.stream()
                 .map(s -> new FileSystemResource(new File(s)))
                 .forEach(fileSystem -> {
@@ -54,9 +53,7 @@ public class EmailSenderService {
                     }
                 });
 //        FileSystemResource fileSystem = new FileSystemResource(new File(attachment));
-//        FileSystemResource fileSystem2 = new FileSystemResource(new File(attachment2));
 //        mimeMessageHelper.addAttachment(fileSystem.getFilename(), fileSystem);
-//        mimeMessageHelper.addAttachment(fileSystem2.getFilename(), fileSystem2);
         mailSender.send(mimeMessage);
         System.out.println("Send mail with attachment...");
     }
